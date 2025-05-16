@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { fetchCoinDetail, fetchCoinChart } from "../api/coingecko";
 import { fetchCoinSummary } from "../api/perplexity";
 import AISummary from "../components/AISummary";
 import CoinLargeChart from "../components/CoinLargeChart";
-import { fetchCoinDetail, fetchCoinChart } from "../api/coingecko";
 
 function CoinDetailPage({ coinId, onBack }) {
   const [detail, setDetail] = useState(null);
   const [summary, setSummary] = useState("");
-  const [loading, setLoading] = useState(true);
   const [chart, setChart] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchCoinDetail(coinId).then((data) => {
@@ -16,6 +16,7 @@ function CoinDetailPage({ coinId, onBack }) {
       setLoading(false);
     });
     fetchCoinSummary(coinId).then(setSummary);
+    fetchCoinChart(coinId).then(setChart);
   }, [coinId]);
 
   if (loading || !detail) return <div>로딩중...</div>;
