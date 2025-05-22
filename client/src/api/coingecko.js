@@ -15,13 +15,13 @@ export const fetchCoins = async () => {
   return res.data;
 };
 
-// 이 부분이 반드시 있어야 합니다!
 export const fetchCoinDetail = async (id) => {
   const res = await axios.get(`${API_BASE}/api/coin`, {
     params: { id },
   });
   return res.data;
 };
+
 // 7일 가격 그래프 데이터 불러오기
 export const fetchCoinChart = async (id) => {
   const res = await axios.get(
