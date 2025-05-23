@@ -43,8 +43,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
-          cache-dependency-path: vercel_serverless/api/package-lock.json
 
       - name: API 의존성 설치
         run: npm ci
