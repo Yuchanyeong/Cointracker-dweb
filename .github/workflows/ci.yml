@@ -38,13 +38,13 @@ jobs:
         run: npm run build
         working-directory: client
 
-      # ─── Serverless API ───
+        # ─── Serverless API 셋업 ───
       - name: Node.js 셋업 (API)
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
-          cache-dependency-path: vercel_serverless/package-lock.json # ← 여기를 폴더 루트로
+        # cache: 'npm'                ← 이 줄 삭제
+        # cache-dependency-path: ...  ← 이 줄도 삭제
 
       - name: API 의존성 설치
         run: npm ci
