@@ -1,10 +1,10 @@
+# .github/workflows/ci.yml
 name: CI
 
-# PR 또는 main 브랜치 푸시 시 트리거
 on:
-  pull_request:
-    branches: [main]
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
 
 jobs:
@@ -18,32 +18,38 @@ jobs:
       - name: 체크아웃
         uses: actions/checkout@v3
 
-      - name: Node.js 셋업
+      # ─── Frontend ───
+      - name: Node.js 셋업 (frontend)
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+          cache-dependency-path: client/package-lock.json
 
-      # ─── Frontend (client) ───
       - name: 프론트엔드 의존성 설치
         run: npm ci
         working-directory: client
 
       - name: 프론트엔드 Lint & Test
-        run: |
-          npm run lint
-          npm test
+        run: npm run lint && npm test
         working-directory: client
 
       - name: 프론트엔드 빌드
         run: npm run build
         working-directory: client
 
-      # ─── Serverless Functions (vercel_serverless) ───
-      - name: Serverless 함수 의존성 설치
+      # ─── Serverless API ───
+      - name: Node.js 셋업 (API)
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+          cache-dependency-path: vercel_serverless/api/package-lock.json
+
+      - name: API 의존성 설치
         run: npm ci
         working-directory: vercel_serverless/api
 
-      - name: Serverless 함수 빌드/검증
+      - name: API 빌드
         run: npm run build
         working-directory: vercel_serverless/api
