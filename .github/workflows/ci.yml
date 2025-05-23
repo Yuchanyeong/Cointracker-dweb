@@ -49,7 +49,3 @@ jobs:
       - name: API 의존성 설치
         run: npm ci
         working-directory: vercel_serverless
-
-      - name: API 빌드
-        run: npm run build
-        working-directory: vercel_serverless
