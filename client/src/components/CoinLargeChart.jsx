@@ -33,7 +33,7 @@ export default function CoinLargeChart({ prices }) {
   };
 
   return (
-    <div style={{ width: "100%", height: "320px", margin: "32px 0" }}>
+    <div className="large-chart-wrapper">
       <Line data={data} options={options} />
     </div>
   );

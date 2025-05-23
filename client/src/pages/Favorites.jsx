@@ -22,7 +22,7 @@ function Favorites({ onSelectCoin }) {
   );
 
   return (
-    <div>
+    <div className="main-container">
       <input
         type="text"
         placeholder="코인명 또는 심볼 검색"

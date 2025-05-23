@@ -6,17 +6,11 @@ function FavoriteButton({ coinId, onClick }) {
 
   return (
     <button
+      className={`favorite-btn${isFavorite ? " active" : ""}`}
       onClick={(e) => {
-        e.stopPropagation(); // 행 클릭 이벤트 버블링 방지
+        e.stopPropagation();
         toggleFavorite(coinId);
         if (onClick) onClick();
-      }}
-      style={{
-        background: "none",
-        border: "none",
-        fontSize: 18,
-        cursor: "pointer",
-        color: isFavorite ? "#f6c700" : "#bbb",
       }}
       aria-label={isFavorite ? "즐겨찾기 해제" : "즐겨찾기 추가"}
     >
@@ -24,5 +18,4 @@ function FavoriteButton({ coinId, onClick }) {
     </button>
   );
 }
-
 export default FavoriteButton;

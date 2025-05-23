@@ -19,29 +19,33 @@ function CoinDetailPage({ coinId, onBack }) {
     fetchCoinChart(coinId).then(setChart);
   }, [coinId]);
 
-  if (loading || !detail) return <div>로딩중...</div>;
+  if (loading || !detail) return <div className="loading-box">로딩중...</div>;
 
   return (
-    <div>
-      <button onClick={onBack}>← 뒤로가기</button>
+    <div className="detail-container">
+      <button className="back-btn" onClick={onBack}>
+        ← 뒤로가기
+      </button>
       <h2>
         {detail.name} ({detail.symbol.toUpperCase()})
       </h2>
       <img src={detail.image?.large} alt={detail.name} width={64} />
-      <div>
+      <div className="price">
         현재가: ${detail.market_data?.current_price?.usd?.toLocaleString()}
       </div>
-      <div>
+      <div className="market-cap">
         시가총액: ${detail.market_data?.market_cap?.usd?.toLocaleString()}
       </div>
-      <div>{chart && <CoinLargeChart prices={chart.prices} />}</div>
+      <div className="large-chart-wrapper">
+        {chart && <CoinLargeChart prices={chart.prices} />}
+      </div>
       <div
         dangerouslySetInnerHTML={{
           __html: detail.description?.ko || detail.description?.en || "",
         }}
       />
       <h3>최신 요약 (AI)</h3>
-      <div style={{ background: "#fafafa", padding: 16, borderRadius: 8 }}>
+      <div className="ai-summary-box">
         <AISummary markdown={summary} />
       </div>
     </div>

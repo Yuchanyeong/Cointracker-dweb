@@ -1,10 +1,9 @@
 import FavoriteButton from "./FavoriteButton";
 import { Line } from "react-chartjs-2";
-import Chart from "chart.js/auto";
 
 function Sparkline({ data }) {
   return (
-    <div style={{ width: 100, height: 40 }}>
+    <div className="sparkline-cell">
       <Line
         data={{
           labels: data.map((_, i) => i),
@@ -60,33 +59,30 @@ export default function CoinTable({ coins, onSelect }) {
             </td>
             <td>{coin.market_cap_rank}</td>
             <td>
-              <img
-                src={coin.image}
-                alt={coin.symbol}
-                width={20}
-                style={{ verticalAlign: "middle" }}
-              />
-              <b style={{ marginLeft: 8 }}>{coin.name}</b>{" "}
-              <span style={{ color: "#888" }}>{coin.symbol.toUpperCase()}</span>
+              <div className="coin-info">
+                <img src={coin.image} alt={coin.symbol} />
+                <b>{coin.name}</b>
+                <span style={{ color: "#888" }}>
+                  {coin.symbol.toUpperCase()}
+                </span>
+              </div>
             </td>
             <td>${coin.current_price.toLocaleString()}</td>
             <td
-              style={{
-                color:
-                  coin.price_change_percentage_1h_in_currency > 0
-                    ? "green"
-                    : "red",
-              }}
+              className={
+                coin.price_change_percentage_1h_in_currency > 0
+                  ? "positive"
+                  : "negative"
+              }
             >
               {coin.price_change_percentage_1h_in_currency?.toFixed(2)}%
             </td>
             <td
-              style={{
-                color:
-                  coin.price_change_percentage_24h_in_currency > 0
-                    ? "green"
-                    : "red",
-              }}
+              className={
+                coin.price_change_percentage_24h_in_currency > 0
+                  ? "positive"
+                  : "negative"
+              }
             >
               {coin.price_change_percentage_24h_in_currency?.toFixed(2)}%
             </td>
