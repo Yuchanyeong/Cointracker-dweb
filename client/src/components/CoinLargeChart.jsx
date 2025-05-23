@@ -8,7 +8,7 @@ export default function CoinLargeChart({ prices }) {
     datasets: [
       {
         label: "가격(USD)",
-        data: prices.map(([_, price]) => price),
+        data: prices.map(([, price]) => price),
         borderColor: "#1976d2",
         backgroundColor: "rgba(25, 118, 210, 0.08)",
         borderWidth: 2,
