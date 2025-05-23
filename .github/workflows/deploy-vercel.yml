@@ -17,5 +17,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # 필수!
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} # 필수!
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} # 필수!
-          working-directory: ./client # Next.js 앱이 있는 폴더
+          working-directory: . # Next.js 앱이 있는 폴더
           vercel-args: --prod
