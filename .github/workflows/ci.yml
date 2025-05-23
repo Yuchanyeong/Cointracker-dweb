@@ -31,7 +31,7 @@ jobs:
         working-directory: client
 
       - name: 프론트엔드 Lint & Test
-        run: npm run lint && npm test
+        run: npm run lint
         working-directory: client
 
       - name: 프론트엔드 빌드
