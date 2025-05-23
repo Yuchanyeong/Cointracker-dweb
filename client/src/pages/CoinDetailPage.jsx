@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { fetchCoinDetail, fetchCoinChart } from "../api/coingecko";
-import { fetchCoinSummary } from "../api/perplexity";
+import { fetchCoinDetail, fetchCoinChart } from "./api/coingecko";
+import { fetchCoinSummary } from "./api/perplexity";
 import AISummary from "../components/AISummary";
 import CoinLargeChart from "../components/CoinLargeChart";
 
