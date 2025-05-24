@@ -15,16 +15,9 @@
       }
     }
   ],
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/vercel_serverless/api/:path*.js"
-    },
-    {
-      "source": "/:path((?!api|.*\\..*).*)",
-      "destination": "/index.html"
-    }
-  ],
+
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
+
   "headers": [
     {
       "source": "/api/(.*)",
