@@ -2,22 +2,23 @@
   "version": 2,
   "builds": [
     {
-      "src": "vercel_serverless/api/**/*.js",
+      "src": "vercel_serverless/api/*.js",
       "use": "@vercel/node"
     },
     {
-      "src": "client/dist/**/*",
+      "src": "client/dist/*",
       "use": "@vercel/static"
     }
   ],
-  "rewrites": [
+  "routes": [
+    { "handle": "filesystem" },
     {
-      "source": "/api/:path*",
-      "destination": "/vercel_serverless/api/:path*.js"
+      "src": "/api/(.*)",
+      "dest": "/vercel_serverless/api/$1.js"
     },
     {
-      "source": "/",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/client/dist/index.html"
     }
   ],
   "headers": [
