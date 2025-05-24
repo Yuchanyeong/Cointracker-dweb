@@ -1,7 +1,10 @@
 {
   "version": 2,
   "builds": [
-    { "src": "vercel_serverless/api/**/*.js", "use": "@vercel/node" },
+    {
+      "src": "vercel_serverless/api/**/*.js",
+      "use": "@vercel/node"
+    },
     {
       "src": "client/package.json",
       "use": "@vercel/static-build",
@@ -17,8 +20,14 @@
       "source": "/api/:path*",
       "destination": "/vercel_serverless/api/:path*.js"
     },
+
     {
-      "source": "/(.*)",
+      "source": "/",
+      "destination": "/client/dist/index.html"
+    },
+
+    {
+      "source": "/:path((?!.*\\..*).*)",
       "destination": "/client/dist/index.html"
     }
   ],
