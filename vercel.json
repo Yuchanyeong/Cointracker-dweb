@@ -21,7 +21,7 @@
       "destination": "/vercel_serverless/api/:path*.js"
     },
     {
-      "source": "/:path((?!api|.*\\..*).*)",
+      "source": "/",
       "destination": "/index.html"
     }
   ],
