@@ -10,7 +10,7 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
       "src": "/api/(.*)",
       "dest": "/vercel_serverless/api/$1.js"
