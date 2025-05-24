@@ -16,6 +16,10 @@
     {
       "source": "/api/:path*",
       "destination": "/vercel_serverless/api/:path*.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/client/dist/index.html"
     }
   ],
   "headers": [
