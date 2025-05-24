@@ -1,23 +1,42 @@
 # .github/workflows/deploy-via-hook.yml
-name: 🚀 Deploy via Vercel Deploy Hook
+name: 🚀 Build & Deploy via Vercel Deploy Hook
 
-# main 브랜치에 커밋 푸시될 때마다
 on:
   push:
     branches:
       - main
 
 jobs:
-  trigger-deploy:
-    name: Trigger Vercel Deploy Hook
+  build-and-trigger:
+    name: Build & Trigger
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Call Vercel Deploy Hook
+      - name: Setup Node.js (Frontend)
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+
+      - name: Install & Build Frontend
         run: |
-          curl -X POST "$VERCEL_DEPLOY_HOOK"
+          cd client
+          npm ci
+          npm run lint
+          npm run build
+
+      - name: Copy build to public
+        run: |
+          rm -rf public
+          mkdir public
+          cp -r client/dist/* public/
+
+      - name: Trigger Vercel Deploy Hook
         env:
           VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          curl -X POST "$VERCEL_DEPLOY_HOOK"
