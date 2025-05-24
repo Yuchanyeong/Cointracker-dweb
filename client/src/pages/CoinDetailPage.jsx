@@ -39,7 +39,9 @@ function CoinDetailPage({ coinId, onBack }) {
       <div className="large-chart-wrapper">
         {chart && <CoinLargeChart prices={chart.prices} />}
       </div>
-      <h3>최신 요약 (AI)</h3>
+      <div>
+        <h3>최신 요약 (AI)</h3>
+      </div>
       <div className="ai-summary-box">
         <AISummary markdown={summary} />
       </div>
