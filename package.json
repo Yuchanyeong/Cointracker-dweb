@@ -2,5 +2,8 @@
   "dependencies": {
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1"
+  },
+  "scripts": {
+    "build": "npm ci --prefix client && npm run build --prefix client"
   }
 }
