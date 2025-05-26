@@ -3,23 +3,23 @@
 ## 디렉토리 구조
 
 ```
-coinproject/
-├── client/ # React 프론트엔드
-│ ├── src/
-│ │ ├── api/ # API 호출 함수 (coingecko.js, perplexity.js 등)
-│ │ ├── components/ # 재사용 컴포넌트 (CoinTable, CoinLargeChart, AISummary 등)
-│ │ ├── pages/ # 페이지 컴포넌트 (Home, Favorites, CoinDetailPage 등)
-│ │ └── store/ # zustand 전역 상태 (useCryptoStore.js)
-│ ├── public/
-│ └── package.json
-├── vercel_serverless/ # Vercel 서버리스 함수
-│ └── api/
-│ ├── coins.js # 코인 목록 프록시
-│ ├── coin.js # 코인 상세 프록시
-│ ├── coin_chart.js # 코인 차트 프록시
-│ └── perplexity.js # Perplexity AI 요약 프록시
+coin_project/
+├── client/                # React 프론트엔드
+│   ├── src/
+│   │   ├── api/           # API 호출 함수 (coingecko.js, perplexity.js 등)
+│   │   ├── components/    # 재사용 컴포넌트 (CoinTable, CoinLargeChart, AISummary 등)
+│   │   ├── pages/         # 페이지 컴포넌트 (Home, Favorites, CoinDetailPage 등)
+│   │   └── store/         # zustand 전역 상태 (useCryptoStore.js)
+│   ├── public/
+│   └── package.json
+├── nginx/                 # (선택) Nginx 설정
+├── .github/               # Github Actions 등 워크플로우
+├── .gitignore
+├── docker-compose.yml
+├── Dockerfile
+├── package.json
 ├── README.md
-└── ...
+└── vercel.json            # (선택) Vercel 배포 설정
 ```
 
 ### 1. React (Vite 기반) 프론트엔드
