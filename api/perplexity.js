@@ -38,7 +38,7 @@ export default async function handler(req, res) {
 "${coinName}" 관련 최근 뉴스 요약.
 
 오늘 기준으로 "${coinName}" 관련 가장 최근 뉴스 헤드라인과 주요 내용을 최대 5개까지 **마크다운 형식**으로 요약해줘.
-
+먼저 # ${coinName} 관련 최근 뉴스 요약 으로 시작할거야. 마크다운 형식으로 제목부터 시작할거야.
 각 뉴스는 아래 예시처럼 보여줘:
 
 1. 헤드라인
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
 
 - 관련 뉴스가 5개 미만이면 있는 것만 보여줘.
 - 관련 뉴스가 하나도 없으면 아무것도 출력하지 마.
-- 각 뉴스마다 헤드라인, 내용 요약, 링크만 딱 보여주고, 그 외 설명이나 추가 멘트는 절대 하지 마.
+- 각 뉴스마다 헤드라인, 내용 요약, 링크만 딱 보여주고, 그 외 설명이나 추가 멘트는 절대 하지말아줘.
 `;
   try {
     const response = await fetch("https://api.perplexity.ai/chat/completions", {
