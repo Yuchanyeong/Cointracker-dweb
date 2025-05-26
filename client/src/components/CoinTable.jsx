@@ -2,6 +2,9 @@ import FavoriteButton from "./FavoriteButton";
 import { Line } from "react-chartjs-2";
 
 function Sparkline({ data }) {
+  if (!data || !Array.isArray(data) || data.length === 0) {
+    return <div style={{ color: "#aaa", fontSize: 12 }}>데이터 없음</div>;
+  }
   return (
     <div className="sparkline-cell">
       <Line

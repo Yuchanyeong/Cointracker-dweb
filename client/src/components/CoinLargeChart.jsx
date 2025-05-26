@@ -2,7 +2,10 @@ import { Line } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 
 export default function CoinLargeChart({ prices }) {
-  // prices: [[timestamp, price], ...]
+  if (!prices || !Array.isArray(prices) || prices.length === 0) {
+    return <div>차트 데이터가 없습니다.</div>;
+  }
+
   const data = {
     labels: prices.map(([ts]) => new Date(ts).toLocaleDateString()),
     datasets: [
@@ -21,7 +24,7 @@ export default function CoinLargeChart({ prices }) {
 
   const options = {
     responsive: true,
-    maintainAspectRatio: false, // 부모 div 크기에 맞춤
+    maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
       title: { display: false },
