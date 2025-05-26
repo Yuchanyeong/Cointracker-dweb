@@ -3,6 +3,8 @@ import { fetchCoins } from "../../api/coingecko";
 import CoinTable from "../components/CoinTable";
 import useCryptoStore from "../store/useCryptoStore";
 
+// 즐겨찾기한 코인만 보여주는 페이지
+// 검색기능도 똑같이 제공한다.
 function Favorites({ onSelectCoin }) {
   const { favorites } = useCryptoStore();
   const [coins, setCoins] = useState([]);

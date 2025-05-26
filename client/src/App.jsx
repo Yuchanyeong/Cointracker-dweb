@@ -20,6 +20,7 @@ function App() {
         <button onClick={() => setPage("favorites")}>즐겨찾기</button>
       </header>
       <main>
+        {/* onSelectCoin 콜백을 통해서 상세 페이지로 이동시킨다. */}
         {page === "home" && <Home onSelectCoin={handleSelectCoin} />}
         {page === "favorites" && <Favorites onSelectCoin={handleSelectCoin} />}
         {page === "detail" && selectedCoinId && (
