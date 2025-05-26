@@ -46,8 +46,9 @@ export default async function handler(req, res) {
    - **링크:** (뉴스 원문 링크)
 
 - 관련 뉴스가 5개 미만이면 있는 것만 보여줘.
-- 관련 뉴스가 하나도 없으면 아무것도 출력하지 마.
 - 각 뉴스마다 헤드라인, 내용 요약, 링크만 딱 보여주고, 그 외 설명이나 추가 멘트는 절대 하지말아줘.
+- 어떠한 경우에도 "뉴스 없음" 이나 "관련 뉴스가 없습니다" 같은 문구는 사용하지 말아줘.
+- 뉴스 요약을 다 출력했다면 다른 어떠한 말도 추가적으로 출력하지말아줘.
 `;
   try {
     const response = await fetch("https://api.perplexity.ai/chat/completions", {
